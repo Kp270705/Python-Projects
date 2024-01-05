@@ -41,7 +41,7 @@ def get_Weather_data():
     data = requests.get("https://api.openweathermap.org/data/2.5/weather?q=" +city+ "&appid=8e256899b0c3ae224ca393085e8c5e15").json()
     
 # this will show temperature of our city from above api in data variable.
-    temperature_label1.config(text=(data["main"]["temp"]) - 273.15) # this will convert our weather from kelvin to degree celsius.
+    temperature_label_value.config(text=(data["main"]["temp"]) - 273.15) # this will convert our weather from kelvin to degree celsius.
 
 # this will show climate of our city from above api in data variable.
     weather_condition = data["weather"][0]["main"] #this line gets information of climate from api and store in 'weather_condition'.
@@ -49,13 +49,13 @@ def get_Weather_data():
     # Update the weather emoji label based on the weather condition
     if weather_condition in weather_to_emoji:
         weather_emoji = weather_to_emoji[weather_condition]
-        climate_label1.config(text=f"{weather_condition} {weather_emoji}")
+        climate_label_value.config(text=f"{weather_condition} {weather_emoji}")
     else:
-        climate_label1.config(text=(data["weather"][0]["main"]))
+        climate_label_value.config(text=(data["weather"][0]["main"]))
 
 
 # this will show pressure of our city from above api in data variable.
-    pressure_label1.config(text=data["main"]["pressure"])
+    pressure_label_value.config(text=data["main"]["pressure"])
 
 # ================================== end of get weather data method ===================================
 
@@ -70,7 +70,7 @@ canvas = Canvas(win, width=1400, height=1400)
 canvas.pack()
 
 # Load the background image
-file = "/mnt/Common Drive/Projects/PYTHON PROJECTS/Git Python Projects/Weather App D/weath6.png"
+file = "/mnt/Common Drive/Projects/PYTHON PROJECTS/GIT PYTHON PROJECTS/Weather App D/weath6.png"
 image = Image.open(file)
 
 # Resize the image to the size of the canvas
@@ -114,8 +114,8 @@ temperature_label = Label(win, text="Temperature in ( ° C )", font=("Times New 
 temperature_label.place(x=30, y=500, height=50, width=490)
 
 # temp. value label:-
-temperature_label1 = Label(win, text=" ", font=("Times New Roman", 20))
-temperature_label1.place(x=625, y=500, height=50, width=445)
+temperature_label_value = Label(win, text=" ", font=("Times New Roman", 20))
+temperature_label_value.place(x=615, y=500, height=50, width=455)
 
 
 # climate label:-
@@ -123,8 +123,8 @@ climate_label = Label(win, text="Climate", font=("Times New Roman", 20))
 climate_label.place(x=30, y=590, height=50, width=490)
 
 # climate label value:-
-climate_label1 = Label(win, text=" ", font=("Times New Roman", 20))
-climate_label1.place(x=625, y=590, height=50, width=445)
+climate_label_value = Label(win, text=" ", font=("Times New Roman", 20))
+climate_label_value.place(x=615, y=590, height=50, width=455)
 
 
 # pressure label:-
@@ -132,8 +132,8 @@ pressure_label = Label(win, text="Pressure", font=("Times New Roman", 20))
 pressure_label.place(x=30, y=680, height=50, width=490)
 
 # pressure label value:-
-pressure_label1 = Label(win, text=" ", font=("Times New Roman", 20))
-pressure_label1.place(x=625, y=680, height=50, width=445)
+pressure_label_value = Label(win, text=" ", font=("Times New Roman", 20))
+pressure_label_value.place(x=615, y=680, height=50, width=455)
 
 
 # Done Button code:-
