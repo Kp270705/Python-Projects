@@ -21,7 +21,7 @@ win.geometry("1200x1200")
 
                         # or 
 
-bg = PhotoImage(file="/mnt/Common Drive/Projects/PYTHON PROJECTS/Git Python Projects/Number find game/guess.png")
+bg = PhotoImage(file="/mnt/Common Drive/Projects/PYTHON PROJECTS/GIT PYTHON PROJECTS/Number find game/guess.png")
 mylabel = Label(win,image=bg,)
 # mylabel.place(anchor='center')
 mylabel.place(x=0, y=0, relwidth=1, relheight=1)
@@ -74,7 +74,8 @@ def check_method():
         guess_result.place(x=200, y=435, height=50, width=800)
         chance_count(guess)
 
-        wrong_guess.destroy()
+        # wrong_guess.config(text="")
+        # wrong_guess.destroy()
 
         end_game()
 
@@ -91,12 +92,12 @@ def check_method():
 
     else:
         if user_guess > rand_num :
-            wrong_guess = Label(win, font=("Times New Roman",15),text="No ! ❌❌❌, please guess little small. ")
-            wrong_guess.place(x=200, y=900, height=50, width=700)
+            guess_result = Label(win, font=("Times New Roman",15),text="No ! ❌❌❌, please guess little small. ")
+            guess_result.place(x=200, y=900, height=50, width=700)
 
         elif user_guess < rand_num:
-            wrong_guess = Label(win, font=("Times New Roman",15),text="No ! ❌❌❌, please guess little large. ")
-            wrong_guess.place(x=200, y=900, height=50, width=700)
+            guess_result = Label(win, font=("Times New Roman",15),text="No ! ❌❌❌, please guess little large. ")
+            guess_result.place(x=200, y=900, height=50, width=700)
 
         # -----------------------------------------------------------------------------------------------------
 
@@ -116,10 +117,10 @@ def chance_count(guess):
         compliment_message = Label(win,  font=("Times New Roman",15),text=" Good! You hit right one, in three guesses:- 👌 ✌️")
         
     elif guess == 4 :
-        compliment_message = Label(win,  font=("Times New Roman",15),text="Finally!!! 😮‍💨 after 4 guessess, You are right.")
+        compliment_message = Label(win,  font=("Times New Roman",15),text="Finally!!! 😮 😗 after 4 guessess, You are right.")
 
     elif guess == 5 :
-        compliment_message = Label(win,  font=("Times New Roman",15),text="Babes In last chance !!! You are right. 🌜 🌜")
+        compliment_message = Label(win,  font=("Times New Roman",15),text="Babes In last chance !!! You are right. 🫣 🫣")
 
     compliment_message.place(x=150, y=900, height=50, width=900)
         
