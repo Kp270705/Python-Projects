@@ -6,6 +6,7 @@ import tkinter
 import random as rd
 
 # =======================================================
+# Tkinter widget Objects :- 
 
 win = Tk()
 win.config(bg="yellow")
@@ -13,47 +14,45 @@ win.attributes("-topmost", True)
 win.title("Number Game")
 win.geometry("1200x1200")
 
-# =======================================================
-
-# bg = PhotoImage(file="/mnt/Common Drive/Projects/PYTHON PROJECTS/Git Python Projects/Number find game/guess.png")
-# mylabel = Label(win,image=bg,)
-# mylabel.place(x=0, y=0, relwidth=1, relheight=1)
-
-                        # or 
+# Image Setting in Bg :-
 
 bg = PhotoImage(file="/mnt/Common Drive/Projects/PYTHON PROJECTS/GIT PYTHON PROJECTS/Number find game/guess.png")
 mylabel = Label(win,image=bg,)
-# mylabel.place(anchor='center')
 mylabel.place(x=0, y=0, relwidth=1, relheight=1)
 
 # =======================================================
 
-rand_num = rd.randint(1, 10)
-# print(rand_num)
+# Some Important variables for storing random generated number, counting user chances, guesses. 
 
+rand_num = rd.randint(1, 10)
 chance_left = 5
 guess = 0
 user_guess = None
 wrong_guess = None
 
+# print(rand_num)
+
 # =====================================================================================
+
 # Program Ending Methods:- 
 
+# Exit Method, when user Won:- 
 def end_game():
-    check_button.config(state="disabled")
-    info_label.config(text="Game Over! You Won.")
-
+    game_ovr_label = Label(win, font=("Times New Roman",15), text="🥳 🥳  😇 😇  🤗 🤗")
+    game_ovr_label.place(x=315, y=765, height=50, width=510)
+    
+# Exit Method, when user did not won:-
 def end_game2():
     check_button.config(state="disabled")
-    compliment_message2 = Label(win, font=("Times New Roman",15), text="😔😔😔 Better luck next time \n")
-    compliment_message2.place(x=15, y=335,height=50, width=470)
 
-    # info_label.config(text="Game Over! You've used all your chances.")
+    wrong_guess.config(text="😔😔😔 Better luck next time.")
 
     game_message = Label(win, text="Game Over! You've used all your chances.", font=("Times New Roman", 15, "bold"))
-    game_message.place(x=15, y=400, height=50, width=470)
+    game_message.place(x=15, y=800, height=50, width=600)
+
 
 # =====================================================================================
+
 # Method for check user guess is right or not:- 
     
 def check_method():
@@ -69,40 +68,37 @@ def check_method():
     user_guess = inputt_label.get()
     user_guess = int(user_guess)
 
+# if player gusses right:- 
     if user_guess == rand_num:
         guess_result = Label(win, font=("Times New Roman",15),text="Burrah!!🍾🍾🍾🍾🎉🎉...You won")
-        guess_result.place(x=200, y=435, height=50, width=800)
+        guess_result.place(x=200, y=500, height=50, width=800)
         chance_count(guess)
+
+        # After 1 or more chances when player wins we hides the previous "wrong" message label with this message.
+        # If Player wins in 1st chance then also we display this message.
+        wrong_guess.config(text="Game Over You won!  😇 🤗") 
+        wrong_guess.place(x=200, y=900, height=50, width=700)
 
         end_game()
 
-        # ----------------------------------------------------------------------------------------------------------------
-# Replay Button:- 
-        
-        # replay_button = Button(win, text="Replay Again ", font=("Times New Roman", 15), command=check_method)
-        # replay_button.place(x=200, y=400, height=25, width=110)
-
-        # ----------------------------------------------------------------------------------------------------------------
-
+# if player didn't able to gues in given chances:- 
     elif chance_left ==0:
             end_game2()
 
+# when user select wrong number:- 
     else:
         if user_guess > rand_num :
-            guess_result = Label(win, font=("Times New Roman",15),text="No ! ❌❌❌, please guess little small. ")
-            guess_result.place(x=200, y=900, height=50, width=700)
+            wrong_guess = Label(win, font=("Times New Roman",15),text="No ! ❌❌❌, please guess little small. ")
+            wrong_guess.place(x=200, y=900, height=50, width=700)
 
         elif user_guess < rand_num:
-            guess_result = Label(win, font=("Times New Roman",15),text="No ! ❌❌❌, please guess little large. ")
-            guess_result.place(x=200, y=900, height=50, width=700)
-
-        # -----------------------------------------------------------------------------------------------------
-
-        # guess_result = Label(win, font=("Times New Roman",15),text="You guessed wrong! ❌❌❌")
-        # guess_result.place(x=58, y=280, height=50, width=400)
+            wrong_guess = Label(win, font=("Times New Roman",15),text="No ! ❌❌❌, please guess little large. ")
+            wrong_guess.place(x=200, y=900, height=50, width=700)
 
 # =====================================================================================
-
+            
+# Count the Chance of Player:- 
+            
 def chance_count(guess):
     if guess == 1 :
         compliment_message = Label(win,  font=("Times New Roman",15),text="Bang On! You hit right one, in one guess:- 🫡  😎 👌 ✌️")
@@ -119,10 +115,11 @@ def chance_count(guess):
     elif guess == 5 :
         compliment_message = Label(win,  font=("Times New Roman",15),text="Babes In last chance !!! You are right. 🫣 🫣")
 
-    compliment_message.place(x=150, y=900, height=50, width=900)
+    compliment_message.place(x=150, y=600, height=50, width=900)
         
 # =====================================================================================
 
+# Initial Labels and their placement:- 
 
 firstlabel = Label(win, text="Number Finding Game. 😛 ", font=("Times New Roman", 17, "bold"))
 firstlabel.place(x=350, y=10, height=50, width=550)
@@ -144,8 +141,10 @@ rl_inputt_label.place(x=800, y=300, height=50, width=90)
 
 
 check_button = Button(win, text="Check It. ", font=("Times New Roman", 20), command=check_method)
-check_button.place(x=315, y=570, height=50, width=410)
+check_button.place(x=315, y=600, height=50, width=410)
 
 win.mainloop()
 
 
+#  🥳 🥳 😇 😇 😇 😇 🤗 🤗 🤗 🤗
+# (x=150, y=800, height=50, width=900)
