@@ -85,7 +85,7 @@ def check_method():
     elif chance_left ==0:
             end_game2()
 
-# when user select wrong number:- 
+# when user guess wrong number:- 
     else:
         if user_guess > rand_num :
             wrong_guess = Label(win, font=("Times New Roman",15),text="No ! ❌❌❌, please guess little small. ")
