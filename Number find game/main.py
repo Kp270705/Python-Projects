@@ -74,9 +74,6 @@ def check_method():
         guess_result.place(x=200, y=435, height=50, width=800)
         chance_count(guess)
 
-        # wrong_guess.config(text="")
-        # wrong_guess.destroy()
-
         end_game()
 
         # ----------------------------------------------------------------------------------------------------------------
