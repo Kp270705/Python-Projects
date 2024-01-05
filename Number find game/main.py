@@ -48,7 +48,7 @@ def end_game2():
     wrong_guess.config(text="😔😔😔 Better luck next time.")
 
     game_message = Label(win, text="Game Over! You've used all your chances.", font=("Times New Roman", 15, "bold"))
-    game_message.place(x=15, y=800, height=50, width=600)
+    game_message.place(x=200, y=600, height=50, width=800)
 
 
 # =====================================================================================
