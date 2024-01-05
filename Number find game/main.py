@@ -81,7 +81,7 @@ def check_method():
 
         end_game()
 
-# if player didn't able to gues in given chances:- 
+# if player didn't able to guess in given chances:- 
     elif chance_left ==0:
             end_game2()
 
